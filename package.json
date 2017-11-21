@@ -1,0 +1,28 @@
+{
+  "name": "pm2-better-deploy",
+  "version": "0.1.0",
+  "description": "Better deployment tool for pm2",
+  "keywords": [
+    "deploy",
+    "deployment",
+    "pm2",
+    "pm2 deploy"
+  ],
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "author": "Ilya Borovitinov <icehaunter@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/yargs": "^8.0.2",
+    "ssh2": "^0.5.5",
+    "typescript": "^2.6.1",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "@types/ssh2": "^0.5.35"
+  }
+}
