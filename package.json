@@ -16,6 +16,9 @@
   },
   "author": "Ilya Borovitinov <icehaunter@gmail.com>",
   "license": "ISC",
+  "bin": {
+    "pm2-deploy": "./dist/cmd.js"
+  },
   "dependencies": {
     "@types/yargs": "^8.0.2",
     "ssh2": "^0.5.5",
