@@ -131,8 +131,12 @@ const argv = yargs
                 }
             }, {});
         }
-        else if (save_env !== undefined) {
-            savedEnv = Object.assign({}, save_env);
+        else if (typeof save_env === 'object') {
+            for (let key in save_env) {
+                if (process.env[save_env[key]] !== undefined) {
+                    savedEnv[key] = process.env[save_env[key]];
+                }
+            }
         }
         const finalEnv = Object.assign({}, deployEnv, savedEnv);
         const deployer = new deployer_1.Deployer({

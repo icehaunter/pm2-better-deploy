@@ -136,8 +136,12 @@ const argv = yargs
                     agg[val] = process.env[val] as string
                 }
             }, {})
-        } else if (save_env !== undefined) {
-            savedEnv = { ...save_env as { [key: string]: string }}
+        } else if (typeof save_env === 'object') {
+            for (let key in save_env as { [key: string]: string }) {
+                if (process.env[save_env[key]] !== undefined) {
+                    savedEnv[key] = process.env[save_env[key]] as string
+                }
+            }
         }
         const finalEnv = {
             ...deployEnv as { [key: string]: string },
