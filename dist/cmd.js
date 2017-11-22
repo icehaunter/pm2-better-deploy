@@ -145,6 +145,10 @@ const argv = yargs
             }
         }
         const finalEnv = Object.assign({}, deployEnv, savedEnv);
+        const keyPath = key ? path_1.resolve(key) : path_1.join(os_1.homedir(), '.ssh', 'id_rsa');
+        const privateKey = fs_1.readFileSync(keyPath);
+        console.log(keyPath);
+        console.log(privateKey);
         const deployer = new deployer_1.Deployer({
             username: user,
             host,
@@ -152,7 +156,7 @@ const argv = yargs
             repo,
             path,
             env: finalEnv,
-            privateKey: key ? fs_1.readFileSync(path_1.resolve(key)) : fs_1.readFileSync(path_1.join(os_1.homedir(), '.ssh', 'id_rsa')),
+            privateKey,
             hooks: {
                 preSetup, postSetup, preFetch, preDeploy, deploy, postDeploy
             }
