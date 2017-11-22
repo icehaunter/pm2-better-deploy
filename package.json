@@ -1,6 +1,6 @@
 {
   "name": "pm2-better-deploy",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Better deployment tool for pm2",
   "keywords": [
     "deploy",

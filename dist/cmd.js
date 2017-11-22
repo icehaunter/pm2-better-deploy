@@ -52,13 +52,17 @@ const argv = yargs
     handler: (argv) => __awaiter(this, void 0, void 0, function* () {
         const { user, host, ref, repo, path, key } = argv.config.deploy[argv.env];
         const { 'pre-setup': preSetup, 'post-setup': postSetup, 'pre-fetch': preFetch, 'pre-deploy': preDeploy, 'deploy': deploy, 'post-deploy': postDeploy } = argv.config.deploy[argv.env];
+        const keyPath = key ? path_1.resolve(key) : path_1.join(os_1.homedir(), '.ssh', 'id_rsa');
+        const privateKey = fs_1.readFileSync(keyPath);
+        console.log(keyPath);
+        console.log(privateKey);
         const deployer = new deployer_1.Deployer({
             username: user,
             host,
             ref,
             repo,
             path,
-            privateKey: key ? fs_1.readFileSync(path_1.resolve(key)) : fs_1.readFileSync(path_1.join(os_1.homedir(), '.ssh', 'id_rsa')),
+            privateKey,
             hooks: {
                 preSetup, postSetup, preFetch, preDeploy, deploy, postDeploy
             }
@@ -69,6 +73,7 @@ const argv = yargs
         }
         catch (error) {
             console.log(error);
+            process.exit(1);
         }
         finally {
             deployer.stop();
@@ -103,6 +108,7 @@ const argv = yargs
         }
         catch (error) {
             console.log(error);
+            process.exit(1);
         }
         finally {
             deployer.stop();
@@ -170,6 +176,7 @@ const argv = yargs
         }
         catch (error) {
             console.log(error);
+            process.exit(1);
         }
         finally {
             deployer.stop();

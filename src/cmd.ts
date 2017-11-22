@@ -50,13 +50,17 @@ const argv = yargs
             'post-deploy': postDeploy 
         } = argv.config.deploy[argv.env]
 
+        const keyPath = key ? resolve(key) : join(homedir(), '.ssh', 'id_rsa')
+        const privateKey = readFileSync(keyPath)
+        console.log(keyPath)
+        console.log(privateKey)
         const deployer = new Deployer({
             username: user,
             host,
             ref,
             repo,
             path,
-            privateKey: key ? readFileSync(resolve(key)) : readFileSync(join(homedir(), '.ssh', 'id_rsa')),
+            privateKey,
             hooks: {
                 preSetup, postSetup, preFetch, preDeploy, deploy, postDeploy
             }
@@ -66,6 +70,7 @@ const argv = yargs
             await deployer.setup({ force: argv.reset })
         } catch (error) {
             console.log(error)
+            process.exit(1)
         } finally {
             deployer.stop()
         }
@@ -99,6 +104,7 @@ const argv = yargs
             console.log(result)
         } catch (error) {
             console.log(error)
+            process.exit(1)
         } finally {
             deployer.stop()
         }
@@ -184,6 +190,7 @@ const argv = yargs
             await deployer.deploy({ newref, newConf })
         } catch (error) {
             console.log(error)
+            process.exit(1)
         } finally {
             deployer.stop()
         }
