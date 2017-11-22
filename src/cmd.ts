@@ -52,8 +52,6 @@ const argv = yargs
 
         const keyPath = key ? resolve(key) : join(homedir(), '.ssh', 'id_rsa')
         const privateKey = readFileSync(keyPath)
-        console.log(keyPath)
-        console.log(privateKey)
         const deployer = new Deployer({
             username: user,
             host,
@@ -156,8 +154,6 @@ const argv = yargs
 
         const keyPath = key ? resolve(key) : join(homedir(), '.ssh', 'id_rsa')
         const privateKey = readFileSync(keyPath)
-        console.log(keyPath)
-        console.log(privateKey)
 
         const deployer = new Deployer({
             username: user,
