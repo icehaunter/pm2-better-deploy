@@ -79,17 +79,21 @@ export class SSHClient {
                     }
                 })
                 stream.on('data', (data: string | Buffer) => {
-                    if (typeof data === 'string')
+                    if (typeof data === 'string') {
                         stdout = data
-                    else
+                        log || console.log('stdout: ' + data)
+                    } else {
                         stdout = data.toString('utf-8')
-                    log || console.log('stdout: ' + data)
+                        log || console.log('stdout: ' + data.toString('utf-8'))
+                    }
                 }).stderr.on('data', (data) => {
-                    if (typeof data === 'string')
+                    if (typeof data === 'string') {
                         stderr = data
-                    else
+                        log || console.log('stderr: ' + data)
+                    } else {
                         stderr = data.toString('utf-8')
-                    log || console.log('stderr: ' + data)
+                        log || console.log('stderr: ' + data.toString('utf-8'))
+                    }
                 })
             })
         })
