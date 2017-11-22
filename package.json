@@ -1,6 +1,6 @@
 {
   "name": "pm2-better-deploy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Better deployment tool for pm2",
   "keywords": [
     "deploy",
@@ -18,6 +18,11 @@
   "license": "ISC",
   "bin": {
     "pm2-deploy": "./dist/cmd.js"
+  },
+  "repository" :
+  { 
+    "type" : "git", 
+    "url" : "https://github.com/icehaunter/pm2-better-deploy.git"
   },
   "dependencies": {
     "@types/yargs": "^8.0.2",

@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,9 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const deployer_1 = require("./deployer");
-// import { readFileSync } from "fs";
-// import { join } from "path";
-// import { homedir } from "os";
 const yargs = require("yargs");
 const fs_1 = require("fs");
 const path_1 = require("path");
@@ -185,4 +183,3 @@ const argv = yargs
     },
 })
     .argv;
-console.log(argv);

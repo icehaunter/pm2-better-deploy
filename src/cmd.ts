@@ -1,7 +1,5 @@
+#! /usr/bin/env node
 import { Deployer, IDeployOptions } from "./deployer";
-// import { readFileSync } from "fs";
-// import { join } from "path";
-// import { homedir } from "os";
 import * as yargs from 'yargs';
 import { statSync, accessSync, readFileSync } from "fs";
 import { resolve, join } from "path";
@@ -198,5 +196,3 @@ const argv = yargs
     },
 })
 .argv
-
-console.log(argv)
